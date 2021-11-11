@@ -64,7 +64,9 @@
 </template>
 
 <script>
+// axios import
 import axios from "axios";
+// Components import
 import Hero from "../components/Hero";
 import Loading from '../components/Loading'
 export default {
@@ -94,7 +96,6 @@ export default {
       result.data.results.forEach((movie) => {
         this.movies.push(movie);
       });
-      console.log('hi');
     },
     async searchMovies() {
       const data = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=bf2aa90d91269270e8af9e5fe271122d&language=fr&page=1&query=${this.searchInput}`);
