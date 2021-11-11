@@ -89,6 +89,23 @@ export default {
     await this.searchMovies();
   },
   fetchDelay: 1000,
+  head() {
+    return {
+      title: 'Movie App | Latest Streaming Infos',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Obtenez les dernières informations à propos des films les plus récents',
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'movie, stream, streaming',
+        },
+      ]
+    }
+  },
   methods: {
     async getMovies() {
       const data = axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=bf2aa90d91269270e8af9e5fe271122d&language=fr&page=1');
