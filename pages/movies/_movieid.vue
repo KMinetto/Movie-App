@@ -53,13 +53,18 @@ export default {
   },
   data() {
     return {
-      movie: null
+      movie: ''
     }
   },
   async fetch() {
     await this.getSingleMovie();
   },
   fetchDelay: 1000,
+  head() {
+    return {
+      title: this.movie.title,
+    }
+  },
   methods: {
     async getSingleMovie() {
       const data = axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.movieid}?api_key=bf2aa90d91269270e8af9e5fe271122d&language=fr&page=1`);
