@@ -7,7 +7,7 @@
         <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" :alt="`Image du film ${ movie.title }`">
       </div>
       <div class="movie-content">
-        <h1>Title: {{ movie.title }}</h1>
+        <h1>Titre : {{ movie.title }}</h1>
         <p class="movie-fact tagline">
           <span>TagLine : </span>"{{ movie.tagline }}"
         </p>

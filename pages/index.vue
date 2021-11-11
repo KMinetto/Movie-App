@@ -5,7 +5,7 @@
     <!-- Search Bar -->
     <div class="container search">
       <input v-model.lazy="searchInput" type="text" placeholder="Search" @keyup.enter="$fetch">
-      <button v-show="searchInput !== ''" class="button" @click="clearSearch">Clear Search</button>
+      <button v-show="searchInput !== ''" class="button" @click="clearSearch">Annuler la recherche</button>
     </div>
     <!-- Loading -->
     <Loading v-if="$fetchState.pending" />
@@ -22,7 +22,7 @@
           <div class="info">
             <p class="title">{{ movie.title.slice(0, 25) }} <span v-if="movie.title.length > 25">...</span></p>
             <p class="release">
-              Released :
+              Sortie le :
               {{
                 new Date(movie.release_date).toLocaleString('fr-FR', {
                   month: 'long',
@@ -31,7 +31,7 @@
                 })
               }}
             </p>
-            <NuxtLink class="button button-light" :to="{ name: 'movies-movieid', params: { movieid: movie.id } }">Get More Info.</NuxtLink>
+            <NuxtLink class="button button-light" :to="{ name: 'movies-movieid', params: { movieid: movie.id } }">Plus d'infos.</NuxtLink>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <div class="info">
             <p class="title">{{ movie.title.slice(0, 25) }} <span v-if="movie.title.length > 25">...</span></p>
             <p class="release">
-              Released :
+              Sortie le :
               {{
                 new Date(movie.release_date).toLocaleString('fr-FR', {
                   month: 'long',
@@ -55,7 +55,7 @@
                 })
               }}
             </p>
-            <NuxtLink class="button button-light" :to="{ name: 'movies-movieid', params: { movieid: movie.id } }">Get More Info.</NuxtLink>
+            <NuxtLink class="button button-light" :to="{ name: 'movies-movieid', params: { movieid: movie.id } }">Plus d'infos.</NuxtLink>
           </div>
         </div>
       </div>
