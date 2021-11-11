@@ -2,14 +2,15 @@
   <div class="home">
     <!-- Hero -->
     <Hero />
-
     <!-- Search Bar -->
     <div class="container search">
       <input v-model.lazy="searchInput" type="text" placeholder="Search" @keyup.enter="$fetch">
       <button v-show="searchInput !== ''" class="button" @click="clearSearch">Clear Search</button>
     </div>
+    <!-- Loading -->
+    <Loading v-if="$fetchState.pending" />
     <!-- Movies -->
-    <div class="container movies">
+    <div v-else class="container movies">
       <!-- Searched Movies -->
       <div v-if="searchInput !== ''" id="movie-grid" class="movies-grid">
         <div v-for="(movie, key) in searchedMovies" :key="key" class="movie">
@@ -65,9 +66,11 @@
 <script>
 import axios from "axios";
 import Hero from "../components/Hero";
+import Loading from '../components/Loading'
 export default {
   components: {
-    Hero
+    Hero,
+    Loading
   },
   data() {
     return {
@@ -83,6 +86,7 @@ export default {
     }
     await this.searchMovies();
   },
+  fetchDelay: 1000,
   methods: {
     async getMovies() {
       const data = axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=bf2aa90d91269270e8af9e5fe271122d&language=fr&page=1');
@@ -107,6 +111,10 @@ export default {
 </script>
 
 <style lang="scss">
+.loading {
+  padding-top: 120px;
+  align-items: flex-start;
+}
 .search {
   display: flex;
   padding: 32px 16px;
